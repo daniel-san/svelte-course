@@ -3,6 +3,11 @@
 
   let name = 'Daniel';
   let age = 25;
+  let job = '';
+  let image = '';
+  let description = '';
+
+  // let uppercaseName; not required!
 
   $: uppercaseName = name.toUpperCase();
 
@@ -37,6 +42,13 @@
 <button on:click="{incrementAge}">Change Age</button>
 <!-- <button on:click="{changeName}">Change Name</button> -->
 <!-- <input type="text" value="{name}" on:input="{nameInput}"> -->
-<input type="text" bind:value="{name}">
+<input type="text" bind:value="{name}" placeholder="Name">
+<input type="text" bind:value="{job}" placeholder="Job">
+<input type="text" bind:value="{image}" placeholder="Image">
+<textarea bind:value="{description}" placeholder="Description"></textarea>
 
-<ContactCard userName="{name}" />
+<ContactCard 
+    userName={name} 
+    jobTitle={job} 
+    {description}
+    userImage={image}/>
