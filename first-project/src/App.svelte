@@ -1,54 +1,36 @@
 <script>
-  import ContactCard from './ContactCard.svelte';
+  import ContactCard from "./ContactCard.svelte";
 
-  let name = 'Daniel';
-  let age = 25;
-  let job = '';
-  let image = '';
-  let description = '';
-
-  // let uppercaseName; not required!
-
-  $: uppercaseName = name.toUpperCase();
-
-  $: console.log(name);
-
-  $: if(name === 'Lucas') {
-    console.log('It runs!');
-    age = 25;
-  }
-
-  function incrementAge() {
-    age += 1;
-  }
-
-  function changeName() {
-    name = 'Lucas';
-  }
-
-  function nameInput(event) {
-    const enteredValue = event.target.value;
-    name = enteredValue;
-  }
+  let name = "Max";
+  let title = "";
+  let image = "";
+  let description = "";
 </script>
 
 <style>
-	h1 {
-		color: purple;
-	}
+  #form {
+    width: 30rem;
+    max-width: 100%;
+  }
 </style>
 
-<h1>Hello {uppercaseName}, my age is {age}!</h1>
-<button on:click="{incrementAge}">Change Age</button>
-<!-- <button on:click="{changeName}">Change Name</button> -->
-<!-- <input type="text" value="{name}" on:input="{nameInput}"> -->
-<input type="text" bind:value="{name}" placeholder="Name">
-<input type="text" bind:value="{job}" placeholder="Job">
-<input type="text" bind:value="{image}" placeholder="Image">
-<textarea bind:value="{description}" placeholder="Description"></textarea>
+<div id="form">
+  <div class="form-control">
+    <label for="userName">User Name</label>
+    <input type="text" bind:value={name} id="userName" />
+  </div>
+  <div class="form-control">
+    <label for="jobTitle">Job Title</label>
+    <input type="text" bind:value={title} id="jobTitle" />
+  </div>
+  <div class="form-control">
+    <label for="image">Image URL</label>
+    <input type="text" bind:value={image} id="image" />
+  </div>
+  <div class="form-control">
+    <label for="desc">Description</label>
+    <textarea rows="3" bind:value={description} id="desc" />
+  </div>
+</div>
 
-<ContactCard 
-    userName={name} 
-    jobTitle={job} 
-    {description}
-    userImage={image}/>
+<ContactCard userName={name} jobTitle={title} {description} userImage={image} />
