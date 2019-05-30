@@ -43,7 +43,7 @@
   <p>Password: {password}</p>
 {/if}
 <ul>
-  {#each passwords as pass, i}
+  {#each passwords as pass, i (pass)}
     <li on:click={() => removePassword(pass)}>{pass}</li>
   {/each}
 </ul>
